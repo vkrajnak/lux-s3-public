@@ -1,6 +1,6 @@
 # Lux-S3-public
 
-Repository containing our code for training an agent for the NeurIPS 2024 - Lux AI Season 3 competition hosted by Kaggle https://www.kaggle.com/c/lux-ai-season-3. This project is a collaboration with Aurore Loisy and all authorship is shared.
+Repository containing our code for training an agent for the NeurIPS 2024 - Lux AI Season 3 competition hosted by Kaggle https://www.kaggle.com/c/lux-ai-season-3. This project is a collaboration with [Aurore Loisy](https://github.com/auroreloisy) and all authorship is shared.
 
 A fully jittable jax agent can be assembled using several network architectures (resnet variants working the best) and several input and output formats defined via config yaml files. Separately from the neural network, the agent calculates and infers an ensemble of environment variables, game parameters, probabilities and other useful information called memory, all of which can be chosen as training input. The network is trained via PPO (from the Stoix library) against itself, a fixed opponent or a pool of opponents. The environment API follows the Jumanji convention.
 
