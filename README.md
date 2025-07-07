@@ -49,14 +49,14 @@ otherwise check hydra documentation.
 
 ## Training an agent and using hydra
 
-Run training with defaults (with Neptune logging disabled - you need to set the API key for Neptune to work)
+Run training with defaults
 ``` bash
 python scripts/ff_ppo.py
 ```
 
 Customize as needed for real experiments by overriding the default config (which is `configs/main/main_ff_ppo.yaml`)
 ``` bash
-python scripts/ff_ppo.py env=resnet_monofield_compact arch=small env/reward=exploratory opponents.use_selfplay=false
+python scripts/ff_ppo.py env/reward=balanced opponents.use_selfplay=false
 ```
 
 You can also use a custom config not already in the repo
@@ -65,10 +65,11 @@ python scripts/ff_ppo.py env/reward=mynewreward
 ```
 where `mynewreward.yaml` is your custom reward config located in your own `$LUX_IO_DIR/configs/env/reward` directory.
 
-Logging a training with Neptune logging is enabled by
+Logging a training with Neptune logging is disabled by default and can be enabled by
 ``` bash
 python scripts/ff_ppo.py logger.use_neptune=true
 ```
+In order for this to work, you need to set up your API key as an environment variable and specify your neptune project in `configs/logger/default.yaml`.
 
 For training, you can preallocate 95% (instead of default 75%) of your GPU memory:
 ``` bash
@@ -90,7 +91,7 @@ where `$LUX_IO_DIR/configs/loader/myloader.yaml` is your loading config, which s
 
 By default the code uses all available cuda devices. You can specify which one(s) to use, e.g. device 1:
 ``` bash
-CUDA_VISIBLE_DEVICES=1 python scripts/ff_ppo.py arch=mono [...]
+CUDA_VISIBLE_DEVICES=1 python scripts/ff_ppo.py [...]
 ```
 
 ## Testing an agent
