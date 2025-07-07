@@ -19,10 +19,10 @@ The repo contains:
 ## Installing Lux-S3-public
 
 ``` bash
-conda create -n lux-s3 python==3.11
-conda activate lux-s3
-git clone git@github.com:vkrajnak/lux-s3.git
-cd lux-s3
+conda create -n lux-s3-public python==3.11
+conda activate lux-s3-public
+git clone git@github.com:vkrajnak/lux-s3-public.git
+cd lux-s3-public
 pip install .
 pip install external/lux/
 ```
