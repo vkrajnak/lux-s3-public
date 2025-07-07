@@ -1,0 +1,7 @@
+defaults:
+  - _base
+  - _self_
+
+total_num_envs: 36
+num_updates: 160
+num_evaluation: 20

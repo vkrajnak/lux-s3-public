@@ -1,0 +1,4 @@
+early_stopping: false  # reset the environment if player has won/lost 3 matches
+permutation_rate: 0.0  # how often are inputs permuted, between 0 (never) and 1 (always)
+eval_greedy: ${env.agent.greedy}  # if true the eval policy will select an action which corresponds to the greatest logit; if false, the policy will sample from the logits
+eval_metric: ${env.reward.best_fn} # used to determine which model is best (for saving), obtained from the reward definition

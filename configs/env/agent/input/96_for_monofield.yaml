@@ -1,0 +1,74 @@
+name: input96  # designed to have <= 96 channels in total (including embeddings) - currently 94
+fields_as_fields:
+  # - zero # (1)
+  # - one  # (1)
+  # - player_unit_field_and_mask  # (32)
+  # - opponent_unit_field_and_mask  # (32)
+  - player_condensed_unit_field  # (16) unit energy/400 if cell is occupied by unit, -1 everywhere else, needed to identify unit IDs
+  - player_condensed_unit_field_previous  # (16)
+  # - player_condensed_unit_map_previous  # (1)
+  - player_condensed_summed_energy_and_n_units_maps  # (2) map of summed unit energies / 400 and map of number of opponent units / 16, with -1 where no opponent units are present (REDUNDANT but a different way of providing information)
+  - player_condensed_summed_energy_and_n_units_maps_previous  # (2)
+  # - last_action_monofield  # (16) 1 for last monofield action, 0 everywhere else
+  # - last_action_duomofield  # (16)
+  - player_recently_visited_map  # (1) recently visited cells have a positive value (1 for current cell, 0.5 for cells visited last time step, 0.25 for two steps ago...), 0 everywhere else
+  # - opponent_condensed_unit_field  # (16)
+  # - opponent_condensed_unit_map  # (1)
+  # - opponent_unit_map_and_mask  # (2)
+  - opponent_condensed_summed_energy_and_n_units_maps  # (2)
+  - opponent_condensed_summed_energy_and_n_units_maps_previous  # (2)
+  # - opponent_recently_visited_map  # (1)
+  - contact_efficiency_map  # (1)  proportional to damage done by collision/adjacent energy void if moving into the cell (not accounting for whether it is actually possible to move there), between 0 and 1
+  - sap_efficiency_map  # (1) damage done by sapping in each cell: 1/16 (resp 2/16) if one (resp 2) opponent unit present, reduced by sap_dropoff factor in adjacent cells), 0 elsewhere
+  - invisible_point_tiles_sap_map  # (1) probabilistic damage done by sapping invisible opponent on/near point tile: 1/16 of an opponent on an unseen point tile or potential point tile, reduced by sap_dropoff factor in adjacent cells, 0 elsewhere
+  - relic_map  # (1) 1 at relic position and 0 elsewhere -- a bit REDUNDANT with potential_point_tile_map (which are centered around known relics)
+  - point_tile_map  # (1) 1 if a point tile and 0 otherwise
+  - point_tile_occupancy_map  # (1) 1 if occupied by player, -1 if occupied by opponent, 0 otherwise (ie either not occupied or don't know)
+  - point_tile_occupancy_map_previous  # (1)
+  - potential_point_tile_map  # (1) 1 if potentially a point tile and 0 otherwise (a potential point tile either becomes a point tile or an empty tile)
+  # - empty_tile_map  # (1) complement of point_tile_map, REDUNDANT
+  - approx_dist_to_point_tiles  # (1) a bit REDUNDANT with potential_point_tile_map but contains more information (~ distance/24) so useful to have both
+  # - point_field  # (1) do not use
+  # - energy_field_and_mask  # (2) map of energy/20 (-1 if unknown) and map of valid energy value (bool)
+  - energy_map_including_nebula  # (1) map of energy/400 (NOTE THE SCALING), accounting for nebula energy reduction and associating asteroid to very low energy (unknown energy values cannot be differentiated from minimum energy)
+  - positive_energy_mask  # (1) bool
+  - high_energy_mask  # (1) bool
+  - very_high_energy_mask  # (1) bool
+  # - tile_type_field         # (1)  # added in embeddings separately -> (4)
+  # - next_tile_type_field    # (1)  # added in embeddings separately -> (4)
+  - explored_tiles_map  # (1) before 50 match steps, visible tiles, after, tiles that have been seen
+  # - nebula_energy_reduction  # (1) included in energy_map_including_nebula and ...energy_mask
+  # - nebula_vision_reduction  # (1) probably not very useful
+  # - vision_map  # (1) probably not very useful
+  - current_sensor_mask  # (1) bool
+  # - action_mask_monofield  # (16) # also works for duomofield, bool REDUNDANT with action_cost_monofield
+  - action_cost_monofield  # (16) # also works for duomofield, -1 for impossible action, cost / 400 for possible action
+  # - action_mask_move  # (16)
+  # - action_mask_sap  # (16)
+scalars_as_fields:  # 20 channels
+  # - zero
+  # - one
+  # - move_cost  # -> represented in action_cost_monofield
+  # - sap_cost  # -> represented in action_cost_monofield
+  # - sap_range  # -> kind of represented in action_mask_monofield/action_cost_monofield
+  # - sensor_range  # -> kind of represented in current_sensor_mask
+  # - nebula_tile_vision_reduction  # -> useful ?
+  # - nebula_tile_energy_reduction # -> accounted for in energy_map_including_nebula_and_asteroid and ...energy_mask
+  # - sap_dropoff_factor  # -> represented in sap_efficiency_map
+  # - energy_void_factor # -> represented in contact_efficiency_map
+  - steps
+  - match_steps
+  - last_match_step
+  # - restart_match_step
+  - match_num
+  - wins
+  - losses
+  # - game_over
+  - points
+  - points_increment
+  - opponent_points
+  - opponent_points_increment
+  - opponent_points_gain  # whether player is gaining more than opponent
+  - game_status  # whether player has currently more points than opponent
+  - all_relics_found  # at most once per game
+  - all_point_tiles_found  # can happen at most once per match in the first three matches (or later on)

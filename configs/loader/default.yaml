@@ -1,0 +1,8 @@
+# --- Checkpoint Loader ---
+load_model: false  # Whether to load model checkpoints.
+load_step: latest  # "best", "latest" or an int corresponding to the step to reload (provided it exists)
+load_args:
+  directory: "" # Directory of checkpoint to load
+  # It corresponds to checkpointer.save_args.directory from run we want to restart from, for example:
+  # "/home/user/lux/outputs/ff_ppo_yyyymmdd-hhmmss/checkpoints"
+  best_fn: ${env.eval_metric}  # When housekeeping, criteria to determine "best" model to load

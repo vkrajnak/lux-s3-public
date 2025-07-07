@@ -1,0 +1,21 @@
+defaults:
+  - run: default
+  - logger: default
+  - checkpointer: default
+  - loader: default
+  - system: ff_ppo
+  - arch: mono
+  - env: shallow_monofield_96
+  - opponents: selfplay
+  - _self_
+
+hydra:
+  run:
+    dir: ${run.output_dir}
+  sweep:  # not used, not sure whether it is configured well
+    dir: ${run.output_dir}
+    subdir: ${hydra.job.override_dirname}
+  output_subdir: hydra  # default was .hydra
+  searchpath:
+    - file://configs
+    - file://${oc.env:LUX_IO_DIR,.}/configs

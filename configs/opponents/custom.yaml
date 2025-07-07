@@ -1,0 +1,9 @@
+defaults:
+  - _shared_opponents
+  - _self_
+
+name: custom_opp
+opponents_pool_dirs: # list of folders where opponents are located
+  - ${oc.env:LUX_IO_DIR,.}/custom_opponents
+use_selfplay: false
+

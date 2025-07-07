@@ -1,0 +1,25 @@
+[build-system]
+requires=["setuptools"]
+build-backend="setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include=['*']
+
+[project]
+name="lux-s3-public"
+authors=[{name="Aurore Loisy and Vladimir Krajnak"}]
+version="1.0"
+dynamic=[ "dependencies"]
+license={file="LICENSE"}
+description="Training bots for Lux S3"
+readme ="README.md"
+requires-python=">=3.11"
+keywords=["lux", "multi-agent", "reinforcement learning", "jax"]
+
+[tool.setuptools.dynamic]
+dependencies={file="requirements.txt"}
+
+[project.scripts]
+ppo="scripts.ff_ppo:main"
+
+

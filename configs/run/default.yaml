@@ -1,0 +1,7 @@
+hostname: ${oc.env:HOSTNAME,unknown}  # get hostname
+seed: null  # RNG seed, drawn randomly if not set
+id: ${now:%Y%m%d-%H%M%S}  # unique
+name: ${hydra:job.name}_${run.id}_${run.hostname}  # name assigned to this run, of the form script_timestamp_hostname
+output_dir: ${oc.env:LUX_IO_DIR,.}/outputs/${run.name}
+trained_agent_dir: ${run.output_dir}/trained_agent_${run.name}
+print_nn: false  # whether to print nn architecture

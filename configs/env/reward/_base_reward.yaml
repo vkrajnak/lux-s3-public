@@ -1,0 +1,33 @@
+name: ???  # a name will have to be specified
+best_fn: episode_return # used to determine which model is best (for saving): "episode_return", "win_game", "win_matches", "points", "points_delta" ... (anything available in "episode_metrics")
+reward_coefficients:
+  # win-related, zero-sum
+  win_game: 0.0  # associated reward is zero-sum, cumulated is in [-1, 1]
+  win_matches: 0.0  # associated reward is zero-sum, cumulated is in [-5, 5]
+  delta_points: 0.0  # associated reward is zero-sum, cumulated is typically in [-1000, 1000] over 5 matches
+  # basic game understanding
+  points: 0.0  # associated reward is positive, cumulated is in [0, ~2500] over 5 matches
+  units_energy: 0.0  # associated reward is of any sign and cumulated value  typically in [?, ?] over 5 matches
+  # exploration, memory_based
+  tiles_explored: 0.0  # associated reward is positive, cumulated is in [0, 2880] over 5 matches
+  point_tiles_found: 0.0  # associated reward is positive, cumulated is typically in [0, 30]
+  relics_found: 0.0  # associated reward is positive, cumulated is in [0, 6]
+  all_relics_found: 0.0  # associated reward is positive, cumulated is in [0, ????????]
+  all_point_tiles_found: 0.0
+  first_relic_found_in_first_match: 0.0
+  # other based on obs/memory
+  units_stuck_by_energy: 0.0  # associated reward is positive, cumulated is in [0, 16*505] over 5 matches
+  point_tiles_unoccupied: 0.0  # at most the current number of units
+  point_tiles_dist: 0.0
+  # from lux engine, in number of units per turn (in [0, 16]), cumulated is * 505
+  units_removed: 0.0  # due to energy < 0
+  units_moved: 0.0
+  units_sapped: 0.0
+  # from lux engine, sapping
+  sapping_energy_benefit: 0.0  # how much energy player took from opponent - sapping cost
+  # from lux engine, expressed as delta = player value - opponent value, defined such that a positive delta is good for the player
+  delta_collision: 0.0  # in number of units destroyed by collision per turn
+  delta_energy_sap: 0.0  # in energy variation per turn, due to sapping - probably not meaningful, better to use sapping_energy_benefit
+  delta_energy_void: 0.0  # in energy variation per turn, due to energy void
+  # from lux engine, other
+  energy_from_field: 0.0  # energy gained/lost from energy field (including nebula effect)

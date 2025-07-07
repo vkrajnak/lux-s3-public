@@ -1,0 +1,7 @@
+defaults:
+  - _shared_opponents
+  - _self_
+
+name: selfplay
+use_selfplay: true
+

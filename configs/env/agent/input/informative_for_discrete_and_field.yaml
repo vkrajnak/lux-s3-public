@@ -1,0 +1,51 @@
+name: informative
+fields_as_fields:
+  # - zero
+  # - one
+  # - player_unit_field_and_mask
+  # - opponent_unit_field_and_mask
+  - player_condensed_unit_field
+  # - opponent_condensed_unit_field
+  - opponent_condensed_unit_map
+  # - opponent_unit_map_and_mask
+  - relic_map
+  - point_tile_map
+  - potential_point_tile_map
+  - empty_tile_map
+  - approx_dist_to_point_tiles
+  # - point_field
+  - energy_field_and_mask
+  - positive_energy_mask
+  # - tile_type_field         # added in embeddings separately
+  # - next_tile_type_field    # added in embeddings separately
+  - explored_tiles_map
+  - nebula_energy_reduction
+  - nebula_vision_reduction
+  - vision_map
+  # - action_mask_monofield
+  - action_mask_move
+  - action_mask_sap
+  # - last_action_monofield
+scalars_as_fields:
+  # - zero
+  # - one
+  - move_cost
+  - sap_cost
+  - sap_range
+  - sensor_range
+  - nebula_tile_vision_reduction
+  - nebula_tile_energy_reduction
+  - sap_dropoff_factor  # never calculated
+  - energy_void_factor
+  - steps
+  - match_steps
+  - last_match_step
+  - restart_match_step
+  - match_num
+  - wins
+  - losses
+  # - game_over
+  - points
+  - opponent_points
+  - opponent_points_gain
+  - all_relics_found

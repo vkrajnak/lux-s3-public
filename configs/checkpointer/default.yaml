@@ -1,0 +1,7 @@
+# --- Checkpointing ---
+save_model: true # Whether to save model checkpoints.
+save_args:
+  directory: ${run.output_dir}/checkpoints
+  max_to_keep: 3 # Maximum number of checkpoints to keep. If not set, keep all checkpoints.
+  best_fn: ${env.eval_metric}  # When housekeeping, criteria to determine "best" model to keep (if max_to_keep is set)
+  keep_time_interval: 1  # When housekeeping, keep a checkpoint approximately every n hours (in addition to max_to_keep)

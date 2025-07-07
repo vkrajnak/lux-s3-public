@@ -1,0 +1,7 @@
+name: convnext
+name_suffix: ""
+kwargs:
+  channels_per_group: [64]
+  blocks_per_group: [4]
+  kernels_per_group: [7]
+  n_initial_depth_convs: 2

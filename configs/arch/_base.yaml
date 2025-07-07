@@ -1,0 +1,13 @@
+# --- Anakin config ---
+architecture_name: anakin
+# --- Training ---
+update_batch_size: 1 # Number of vectorised gradient updates per device.
+total_num_envs: 36  # Total Number of vectorised environments across all devices and batched_updates. Needs to be divisible by n_devices*update_batch_size.
+total_timesteps: null # Set the total environment steps. # If unspecified, it's derived from num_updates; otherwise, num_updates adjusts based on this value.
+num_updates: ??? # ~ # Number of updates  (the number of updates per eval is num_updates // num_evaluation)
+
+# --- Evaluation ---
+num_eval_episodes: 100 # Number of episodes to evaluate per evaluation.
+num_evaluation: ??? # Number of evenly spaced evaluations to perform during training (make sure it is less or equal to num_updates)
+absolute_metric: false # Whether the absolute metric should be computed. For more details
+  # on the absolute metric please see: https://arxiv.org/abs/2209.10485

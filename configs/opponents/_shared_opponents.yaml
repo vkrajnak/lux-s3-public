@@ -1,0 +1,8 @@
+name: ???
+n_rounds: 1000  # number of training "rounds"" to run sequentially (1 round = 1 fixed opponent)
+opponents_pool_dirs: # list of folders where opponents are located
+  - ./all_opponents
+  - ${oc.env:LUX_IO_DIR,.}/opponents
+use_selfplay: true  # whether to use self-play instead of a pool of opponents
+selfplay_kwargs:
+  opponent_actor_params:  ${run.trained_agent_dir}  # path where actor_params.pkl will be loaded from

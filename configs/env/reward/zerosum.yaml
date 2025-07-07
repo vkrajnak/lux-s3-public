@@ -1,0 +1,10 @@
+defaults:
+  - _base_reward
+  - _self_
+
+name: zerosum
+best_fn: episode_return
+reward_coefficients:
+  win_game: 1.0
+  win_matches: 0.2
+  delta_points: 0.001

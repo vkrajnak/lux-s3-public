@@ -1,0 +1,6 @@
+greedy: true
+force:
+  stay_on_point_tile: false
+  no_noop: false
+  sap_location: true
+  avoid_collision: false

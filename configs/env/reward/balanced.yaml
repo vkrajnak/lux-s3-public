@@ -1,0 +1,13 @@
+# Learn to explore the map and get points, while keeping some energy
+defaults:
+  - _base_reward
+  - _self_
+
+name: balanced
+best_fn: episode_return
+reward_coefficients:  # such that each non zero yields a return of order [0.1, 1]
+  win_game: 0.0
+  win_matches: 0.2  # 0 +/- 0.5
+  delta_points: 0.001  # 0 +/- 0.1
+  units_stuck_by_energy: -0.001  # ~ -0.1
+  sapping_energy_benefit: 0.0001  # ~ 0.1

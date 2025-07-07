@@ -1,0 +1,11 @@
+defaults:
+  - _shared_opponents
+  - _self_
+
+name: single_opp
+n_rounds: 1  # number of training "rounds"" to run sequentially (1 round = 1 fixed opponent)
+opponents_pool_dirs: # list of folders where opponents are located
+  - ./single_opponent
+#  - ${oc.env:LUX_IO_DIR,.}/single_opponent
+use_selfplay: false
+

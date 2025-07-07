@@ -1,0 +1,35 @@
+# Learn to explore the map and get points, while keeping some energy. Ignores the opponent completely.
+defaults:
+  - _base_reward
+  - _self_
+
+name: starter
+best_fn: episode_return
+reward_coefficients:  # such that each non zero yields a return of order [0.1, 1]
+  # win-related, zero-sum
+  win_game: 0.0
+  win_matches: 0.0
+  delta_points: 0.0
+  # basic game understanding
+  points: 0.0005  # ~ 0.1 for 200 points cumulated
+  units_energy: 0.000025  # ~ 0.1-1.0 if energy is gathered well compared to spending
+  # exploration, memory_based
+  tiles_explored: 0.0002 # ~ 0.1 for all tiles explored
+  point_tiles_found: 0.01  # ~ 0.1-0.3 for point tiles found (10-30 on average)
+  relics_found: 0.02  # ~ 0.04-0.12 for relics found
+  all_relics_found: 0.1  # 0.1 for all relics found
+  # other based on obs/memory
+  units_stuck_by_energy: -0.0001  # ~ 0.1 for typical game
+  point_tiles_unoccupied: -0.00025  # half the point reward
+  # from lux engine, in number of units per turn (in [0, 16]), cumulated is * 505
+  units_removed: 0.0
+  units_moved: 0.0
+  units_sapped: 0.0
+  # from lux engine, sapping
+  sapping_energy_benefit: 0.0  # 0.0001  # ~ 0.1
+  # from lux engine, expressed as delta = player value - opponent value, defined such that a positive delta is good for the player
+  delta_collision: 0.0
+  delta_energy_sap: 0.0
+  delta_energy_void: 0.0
+  # from lux engine, other
+  energy_from_field: 0.0  # 0.00001  # ~ 0.1 if favoring high energy tiles

@@ -1,0 +1,11 @@
+defaults:
+  - _shared_env
+  - reward: intermediate_tweaked
+  - agent: _shared_agent
+  - agent/input: 96_for_monofield
+  - agent/torso: resnetse96_shallow
+  - _self_
+
+agent:
+  head: duomofield
+

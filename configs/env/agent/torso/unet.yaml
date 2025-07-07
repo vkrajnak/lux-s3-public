@@ -1,0 +1,5 @@
+name: unet
+name_suffix: ""
+kwargs:
+  kernel: 3
+  n_initial_depth_convs: 2

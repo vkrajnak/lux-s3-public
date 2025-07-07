@@ -1,0 +1,19 @@
+# --- Defaults FF-PPO ---
+
+system_name: ff_ppo # Name of the system.
+
+# --- RL hyperparameters ---
+actor_lr: 1e-4 # Learning rate for actor network
+critic_lr: 1e-4 # Learning rate for critic network
+rollout_length: 505 # Number of environment steps per vectorised environment.
+epochs: 4 # Number of ppo epochs per training data batch.
+num_minibatches: 20 # Number of minibatches per ppo epoch.
+gamma: 1.0 # Discounting factor.
+gae_lambda: 0.95 # Lambda value for GAE computation.
+clip_eps: 0.2 # Clipping value for PPO updates and value function.
+ent_coef: 0.0 # Entropy regularisation term for loss function.
+vf_coef: 1.0 # Critic weight (useless since actor and critic losses are separate)
+max_grad_norm: 0.5 # Maximum norm of the gradients for a weight update.
+decay_learning_rates: False # Whether learning rates should be linearly decayed during training.
+standardize_advantages: True # Whether to standardize the advantages.
+# kl_penalty_coef: 3.0 # KL penalty coefficient for PPO updates if using PPO Penalty.
