@@ -1,4 +1,4 @@
-# LUX-S3
+# Lux-S3-public
 
 Repository containing our code for training an agent for the NeurIPS 2024 - Lux AI Season 3 competition hosted by Kaggle https://www.kaggle.com/c/lux-ai-season-3. This project is a collaboration with Aurore Loisy and all authorship is shared.
 
@@ -16,7 +16,7 @@ The repo contains:
 - `player`: the agent to train (self-contained neural network agent with hard-coded memory, used as part of the Kaggle submission)
 - `scripts`: scripts for training the agent
 
-## Installing Lux-S3-train
+## Installing Lux-S3-public
 
 ``` bash
 conda create -n lux-s3 python==3.11
